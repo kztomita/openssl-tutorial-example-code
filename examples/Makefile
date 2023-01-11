@@ -20,7 +20,8 @@ tls_server_bio_gets
 CC = gcc
 
 CFLAGS = -Wall `pkg-config --cflags openssl`
-LDFLAGS = `pkg-config --libs openssl`
+LDFLAGS = `pkg-config --libs-only-L openssl`
+LDLIBS = `pkg-config --libs-only-l openssl`
 SOURCES   = $(wildcard ./*.c)
 
 all: $(ALL)
