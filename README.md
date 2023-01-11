@@ -9,9 +9,9 @@
 
 # Build環境
 
-- Linux(Fedora系で確認)
+- Linux(Fedora35,Ubuntu22で確認)
 - gcc
-- OpenSSL 1.1.1
+- OpenSSL 1.1.1/3.0
 
 Buildにはopenssl-devel-*のパッケージが必要です。
 
@@ -23,12 +23,13 @@ Buildしたバイナリを実行するには、localhost.crt,localhost.key等の
 
 チュートリアルはOpenSSL 1.1.1系を対象にしたものですが、OpenSSL 3.0.7でもBuildできることは確認済みです。
 
-/usr/localなどに個別にインストールしたOpenSSLを使う場合はMakefileのCFLAGS,LDFLAGSあたりを修正してください。
+/usr/localなどに個別にインストールしたOpenSSLを使う場合はMakefileのCFLAGS,LDFLAGS,LDLIBSあたりを修正してください。
 
 例) /usr/local/にインストールしたものを使う場合
 
     CFLAGS = -Wall -I/usr/local/include
-    LDFLAGS = -L/usr/local/lib64 -lssl -lcrypto
+    LDFLAGS = -L/usr/local/lib64
+    LDLIBS = -lssl -lcrypto
 
 実行
 
